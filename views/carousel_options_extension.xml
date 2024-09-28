@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="website.s_carousel_extension" model="ir.ui.view">
-            <field name="name">website.s_carousel_extension</field>
-            <field name="key">website.website.s_carousel_extension</field>
+        <record id="s_carousel_extension" model="ir.ui.view">
+            <field name="name">s_carousel_extension</field>
+            <field name="key">website.s_carousel_extension</field>
             <field name="inherit_id" ref="website.snippet_options"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[@data-js='CarouselItem']" position="after">
-                    <div data-js="CarouselHeight" data-selector=".s_carousel .carousel-item" data-target=".s_carousel">
-                        <we-button-group string="Height">
-                            <we-button data-name="minheight_auto_opt" data-select-class="" title="Fit content">Auto</we-button>
-                            <we-button data-select-class="o_half_screen_height" title="Half screen">50%</we-button>
-                            <we-button data-select-class="o_full_screen_height" title="Full screen" data-name="full_height_opt">100%</we-button>
-                        </we-button-group>
-                    </div>
+                <xpath expr="//div[@data-js='Carousel']" position="inside">
+                    <we-button-group string="Carousel Height">
+                        <we-button data-name="minheight_auto_opt_carousel_extension" data-select-class="" title="Fit content">Auto</we-button>
+                        <we-button data-select-class="o_half_screen_height" title="Half screen">50%</we-button>
+                        <we-button data-select-class="o_full_screen_height carousel_full_screen_height" title="Full screen">100%</we-button>
+                    </we-button-group>
+
+                    <we-input string="Height" class="o_we_sublevel_1" data-name="fixed_height_opt" data-dependencies="minheight_auto_opt_carousel_extension" data-select-style="" data-unit="px" data-css-property="height" data-force-style=""/>
+                        <!--    ↑ ↑ ↑
+                        For this setting, we need to always force the style (= if the block
+                        is naturally 800px tall and the user enters 800px for this setting,
+                        we set 800px as inline style anyway). Indeed, this snippet's style
+                        is based on the height that is forced but once the related public
+                        widgets are started, the inner carousel items receive a min-height
+                        which makes it so the snippet "natural" height is equal to the
+                        initially forced height... so if the style is not forced, it would
+                        ultimately be removed by mistake thinking it is not necessary.
+                        Note: this is forced as not important as we still need the height to
+                        be reset to 'auto' in mobile (generic css rules).
+                        -->
                 </xpath>
             </field>
         </record>

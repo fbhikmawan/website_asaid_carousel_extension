@@ -24,5 +24,11 @@
     'data': [
         'views/carousel_options_extension.xml',
     ],
+
+    'assets': {
+        'web.assets_frontend': [
+            'website_asaid_carousel_extension/static/src/scss/asaid_carousel_extension.scss',
+        ]
+    },
 }
 
