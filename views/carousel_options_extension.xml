@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="website.s_carousel_extension" model="ir.ui.view">
+            <field name="name">website.s_carousel_extension</field>
+            <field name="key">website.website.s_carousel_extension</field>
+            <field name="inherit_id" ref="website.snippet_options"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-js='CarouselItem']" position="after">
+                    <div data-js="CarouselHeight" data-selector=".s_carousel .carousel-item" data-target=".s_carousel">
+                        <we-button-group string="Height">
+                            <we-button data-name="minheight_auto_opt" data-select-class="" title="Fit content">Auto</we-button>
+                            <we-button data-select-class="o_half_screen_height" title="Half screen">50%</we-button>
+                            <we-button data-select-class="o_full_screen_height" title="Full screen" data-name="full_height_opt">100%</we-button>
+                        </we-button-group>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
