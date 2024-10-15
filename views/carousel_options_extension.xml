@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="s_carousel_extension" model="ir.ui.view">
-            <field name="name">s_carousel_extension</field>
-            <field name="key">website.s_carousel_extension</field>
+        <record id="s_snippet_options_vertical_position" model="ir.ui.view">
+            <field name="name">s_snippet_options_vertical_position</field>
+            <field name="key">website.s_snippet_options_vertical_position</field>
+            <field name="inherit_id" ref="website.snippet_options"/>
+            <field name="arch" type="xml">
+                <xpath expr="." position="inside">
+                    <div data-js="VerticalPosition" data-selector="section, .s_carousel .carousel-item, s_quotes_carousel .carousel-item" data-exclude="[data-snippet] :not(.oe_structure) &gt; [data-snippet]" data-target="&gt; .container, &gt; .container-fluid, &gt; .o_container_small">
+                        <we-button-group string="Vertical Position">
+                            <we-button title="Default">Default</we-button>
+                            <we-button data-select-class="h-100 d-flex justify-content-center align-items-start" title="Top">Top</we-button>
+                            <we-button data-select-class="h-100 d-flex justify-content-center align-items-center" title="Center">Center</we-button>
+                            <we-button data-select-class="h-100 d-flex justify-content-center align-items-end" title="End">End</we-button>
+                        </we-button-group>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_carousel_extension_full_height" model="ir.ui.view">
+            <field name="name">s_carousel_extension_full_height</field>
+            <field name="key">website.s_carousel_extension_full_height</field>
             <field name="inherit_id" ref="website.snippet_options"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@data-js='Carousel']" position="inside">
